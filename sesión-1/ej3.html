@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Cronómetro</title>
+</head>
+
+<body>
+    <script>
+        const http = new XMLHttpRequest();
+
+        http.open("GET", "http://motor-service.herokuapp.com/api/motor");
+
+        http.onreadystatechange = function() {
+            if (http.readyState === 4) {
+                console.log(http.responseText);
+            }
+        };
+
+        http.send();
+    </script>
+</body>
+
+</html>
