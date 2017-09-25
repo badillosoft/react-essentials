@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Cronómetro</title>
+    <style>
+        div {
+            font-size: 20pt;
+            color: cornflowerblue;
+            font-weight: 900;
+            width: 400px;
+            height: 300px;
+        }
+
+        .minutes {
+            color: tomato;
+        }
+
+        .seconds {
+            color: purple;
+        }
+    </style>
+</head>
+
+<body>
+    <center>
+        <div>
+            <span id="minutes" class="minutes">00</span>:<span id="seconds" class="seconds">00</span>
+            <br>
+            <button id="button">comenzar</button>
+        </div>
+    </center>
+
+    <script>
+        const seconds = document.getElementById("seconds");
+        const minutes = document.getElementById("minutes");
+        const button = document.getElementById("button");
+
+        button.onclick = function () {
+            let s = Number(seconds.innerText);
+            let m = Number(minutes.innerText);
+
+            s++;
+
+            if (s >= 60) {
+                s = 0;
+                m++;
+
+                if (m >= 100) {
+                    m = 0;
+                }
+            }
+
+            let stext = "";
+
+            if (s < 10) {
+                stext += "0";
+            }
+
+            stext += s;
+
+            seconds.innerText = stext;
+
+            const mtext = (m < 10 ? "0" : "") + m;
+
+            minutes.innerText = mtext;
+        };
+    </script>
+</body>
+
+</html>
