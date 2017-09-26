@@ -13,7 +13,7 @@ export default class App extends Component {
     };
 
     this.addTask = this.addTask.bind(this);
-    this.onDesciptionUpdate = this.onDesciptionUpdate.bind(this);
+    this.onDescriptionUpdate = this.onDescriptionUpdate.bind(this);
   }
 
   addTask() {
@@ -29,7 +29,7 @@ export default class App extends Component {
     });
   }
 
-  onDesciptionUpdate(event) {
+  onDescriptionUpdate(event) {
     this.setState({
       description: event.target.value
     });
@@ -39,7 +39,7 @@ export default class App extends Component {
     return (
       <div className="App">
         <h1>Super TO-DO List App</h1>
-        <input value={this.description} onChange={ this.onDesciptionUpdate } type="text" placeholder="Escribe una tarea" />
+        <input value={this.description} onChange={ this.onDescriptionUpdate } type="text" placeholder="Escribe una tarea" />
         <button onClick={ this.addTask }>agregar</button>
         <ul>{ this.state.items }</ul>
       </div>
