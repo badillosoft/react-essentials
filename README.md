@@ -87,7 +87,7 @@ console.log(content);
 
 > `$ npm install mongodb`
 
-## Crear una aplicación en *React*
+## Crear una aplicación en *React*
 
 1. Instalar/Comprobar `create-react-app`
 
