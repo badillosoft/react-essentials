@@ -87,7 +87,32 @@ console.log(content);
 
 > `$ npm install mongodb`
 
+## Crear una aplicación en *React*
+
+1. Instalar/Comprobar `create-react-app`
+
 > `$ npm install -g create-react-app`
 
-> `$ create-react-app mi-app`
+2. Crear la aplicación
 
+> `$ create-react-app super-todo-list`
+
+3. Ejecturar la aplicación
+
+> `$ cd super-todo-list`
+
+> `$ npm start`
+
+4. Revisar los siguientes archivos importantes:
+
+* __public/index.html__ - Cambiar el título de la aplicación
+
+* __public/manifest.json__ - Cambiar/Definir el nombre de la aplicación
+
+* __src/App.css__ - Cambiar el diseño del componente `App`
+
+* __src/App.js__ - Modificar el componente `App`
+
+* __src/index.css__ - Cambiar/Definir estilos de diseño globales
+
+* __src/index.js__ - Intancia el componente `App`
