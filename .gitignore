@@ -1,2 +1,16 @@
+### Git ###
+*.orig
+
+### Node ###
 node_modules
-.DS_Store
+
+### VIM ###
+*~
+*.swp
+*.swo
+
+### General ###
+*.log
+*.lock*
+*.DS_Store
+

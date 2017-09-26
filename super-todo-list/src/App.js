@@ -8,7 +8,7 @@ export default class App extends Component {
     super(props);
 
     this.state = {
-      desciption: "",
+      description: "",
       items: [],
     };
 
@@ -20,18 +20,18 @@ export default class App extends Component {
     const items = this.state.items;
 
     items.push(
-      <li>{ this.state.desciption }</li>
+      <li>{ this.state.description }</li>
     );
 
     this.setState({
-      desciption: "",
+      description: "",
       items: items
     });
   }
 
   onDesciptionUpdate(event) {
     this.setState({
-      desciption: event.target.value
+      description: event.target.value
     });
   }
 
@@ -39,7 +39,7 @@ export default class App extends Component {
     return (
       <div className="App">
         <h1>Super TO-DO List App</h1>
-        <input value={this.desciption} onChange={ this.onDesciptionUpdate } type="text" placeholder="Escribe una tarea" />
+        <input value={this.description} onChange={ this.onDesciptionUpdate } type="text" placeholder="Escribe una tarea" />
         <button onClick={ this.addTask }>agregar</button>
         <ul>{ this.state.items }</ul>
       </div>
