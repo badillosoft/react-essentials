@@ -116,3 +116,70 @@ console.log(content);
 * __src/index.css__ - Cambiar/Definir estilos de diseño globales
 
 * __src/index.js__ - Intancia el componente `App`
+
+# Controlar un Evento con React
+
+1. Crear un método controlador `handler` dentro de nuestra clase:
+
+~~~js
+class MyComponent extends Component {
+
+    ...
+
+    clickAlertHandler(e) {
+        // TODO: Controlar el evento clic
+    }
+
+    ...
+
+}
+~~~
+
+2. Crear un doble enlace a nuestro controlador en en el constructor `construct`:
+
+~~~js
+construct(props) {
+    super(props);
+    ...
+    this.clickAlertHandler = this.clickAlertHandler.bind(this);
+    ...
+}
+~~~
+
+3. Enlazar el controlador al elemento que queremos controlar:
+
+~~~js
+render() {
+    return (
+        <button onClick={ this.clickAlertHandler } >pulsame</button>
+    );
+}
+~~~
+
+# Controlar un Evento con React - Sin doble enlace
+
+1. Crear un método controlador `handler` dentro de nuestra clase:
+
+~~~js
+class MyComponent extends Component {
+
+    ...
+
+    clickAlertHandler(e) {
+        // TODO: Controlar el evento clic
+    }
+
+    ...
+
+}
+~~~
+
+2. Enlazar el controlador al elemento que queremos controlar, añadiendo una expresión `lambda`:
+
+~~~js
+render() {
+    return (
+        <button onClick={ (e) => this.clickAlertHandler(e) } >pulsame</button>
+    );
+}
+~~~

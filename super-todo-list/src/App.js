@@ -12,37 +12,24 @@ export default class App extends Component {
       items: [],
     };
 
-    this.addTask = this.addTask.bind(this);
-    this.onDescriptionUpdate = this.onDescriptionUpdate.bind(this);
+    this.changeDescriptionHandler = this.changeDescriptionHandler.bind(this);
   }
 
-  addTask() {
-    const items = this.state.items;
-
-    items.push(
-      <li>{ this.state.description }</li>
-    );
-
+  changeDescriptionHandler(e) {
     this.setState({
-      description: "",
-      items: items
-    });
-  }
-
-  onDescriptionUpdate(event) {
-    this.setState({
-      description: event.target.value
+      description: e.target.value,
     });
   }
 
   render() {
     return (
-      <div className="App">
-        <h1>Super TO-DO List App</h1>
-        <input value={this.description} onChange={ this.onDescriptionUpdate } type="text" placeholder="Escribe una tarea" />
-        <button onClick={ this.addTask }>agregar</button>
+      <div className="container">
+        <input onChange={ this.changeDescriptionHandler } placeholder="escribe una tarea" />
+        <button>agregar</button>
+
         <ul>{ this.state.items }</ul>
       </div>
     );
   }
+
 }
