@@ -32,24 +32,29 @@ export default class App extends Component {
     });
 
     this.setState({
+      description: "",
       tasks: tasks
     });
 
-    const input_desc = document.getElementById("input-desc");
-    input_desc.value = "";
+    document.getElementById(`input-desc-${this.props.id}`).value = "";
   }
 
   render() {
-    const items = this.state.tasks.map(task => {
+    const items = this.state.tasks.map((task, i) => {
       return (
-        <li><input type="checkbox" checked={task.checked} /> { task.description }</li>
+        <li key={ `task-${this.props.id}-${i}` } ><input type="checkbox" checked={task.checked} /> { task.description }</li>
       );
     });
 
     return (
       <div className="container">
-        <input id="input-desc" onChange={ (e) => this.changeDescription(e.target.value) } placeholder="escribe una tarea" />
-        <button onClick={ (e) => this.addTask(this.state.description) } >agregar</button>
+        <h1>{ this.props.title }</h1>
+
+        <input id={ `input-desc-${this.props.id}` } 
+          onChange={ (e) => this.changeDescription(e.target.value) } 
+          placeholder="escribe una tarea" />
+
+        <button disabled={ this.state.description.length <= 0 } onClick={ (e) => this.addTask(this.state.description) } >agregar</button>
 
         <ul>{ items }</ul>
       </div>
