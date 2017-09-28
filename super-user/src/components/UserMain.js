@@ -8,24 +8,46 @@ export default class UserMain extends Component {
         super(props);
 
         this.state = {
-            users: []
+            users: [],
+            _users: []
         };
     }
 
     componentDidMount() {
-        fetch("https://randomuser.me/api/?results=10&?seed=super")
+        this.refreshUsers();
+    }
+
+    refreshUsers() {
+        fetch("https://randomuser.me/api/?results=1000&seed=superfoo")
             .then(result => result.json())
             .then(data => {
                 this.setState({
-                    users: data.results
+                    users: data.results,
+                    _users: data.results
                 });
             });
+    }
+
+    updateSearch(query) {
+        if (!query) {
+            this.refreshUsers();
+            return;
+        }
+
+        const users = this.state._users.filter(user => {
+            const re = new RegExp(query, "i");
+            return user.name.first.match(re) || user.name.last.match(re) || user.email.match(re);
+        });
+
+        this.setState({
+            users: users
+        });
     }
 
     render() {
         return (
             <div>
-                <input type="search" placeholder="buscar..." />
+                <input onChange={ e => this.updateSearch(e.target.value) } type="search" placeholder="buscar..." />
 
                 <UserList users={ this.state.users } />
             </div>

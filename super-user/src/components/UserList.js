@@ -7,7 +7,7 @@ export default class UserList extends Component {
     render() {
         const users = this.props.users.map(user => {
             return {
-                key: `${user.id.name}-${user.id.value}`,
+                key: user.login.username,
                 displayName: `${user.name.title} ${user.name.first} ${user.name.last}`,
                 email: user.email,
                 phoneNumber: user.cell,
