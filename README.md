@@ -117,7 +117,7 @@ console.log(content);
 
 * __src/index.js__ - Intancia el componente `App`
 
-# Controlar un Evento con React
+## Controlar un Evento con React
 
 1. Crear un método controlador `handler` dentro de nuestra clase:
 
@@ -156,7 +156,7 @@ render() {
 }
 ~~~
 
-# Controlar un Evento con React - Sin doble enlace
+## Controlar un Evento con React - Sin doble enlace
 
 1. Crear un método controlador `handler` dentro de nuestra clase:
 
@@ -184,7 +184,7 @@ render() {
 }
 ~~~
 
-# Conceptos Fundamentales
+## Conceptos Fundamentales
 
 * __Elemento__ - Un fragmento de html
 
@@ -322,3 +322,7 @@ const happy_users = users.filter(user => {
     return current_month === bith_month;
 });
 ~~~
+
+## Ciclo de vida en React
+
+<img src="react-lifecycle.png" width="50%" height="50%">
