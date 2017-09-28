@@ -183,3 +183,142 @@ render() {
     );
 }
 ~~~
+
+# Conceptos Fundamentales
+
+* __Elemento__ - Un fragmento de html
+
+~~~js
+const element = <li><input type="checkbox"/> Disponible</li>
+~~~
+
+* __Componente__ - Es una clase derivada de `React.Component`
+
+~~~js
+import React, { Component } from 'react';
+
+export default class MiComponente extends Component {
+    render() {
+        // Regresar el elemento visual o null/false
+    }
+}
+~~~
+
+* __Estado Interno__ - Retiene los datos necesarios en el componente
+
+~~~js
+
+export default class MiComponente extends Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            // Agregar clave-valor para cada dato retenido en el componente
+        };
+    }
+
+    foo() {
+        this.state.setState({
+            // Actualizar los valores retenidos
+        });
+    }
+}
+~~~
+
+* __Propiedades__ - Son los atributos pasados al componente en su construcción, estos pueden ser simplemente datos pero también funciones (controladores)
+
+~~~js
+
+// MiComponente.render
+render() {
+    return (
+        <div>
+            <h1>{this.props.title}</h1>
+            <button onClick={ e => this.props.onPulsame() } >pulsame</button>
+        </div>
+    );
+}
+
+// En algún lado
+function imprimir() {
+    console.log("Hola");
+}
+
+<MiComponente title="Saludar" onPulsame={ imprimir }>
+~~~
+
+* __Mapeos y Filtros__ - Transformar y reducir datos de arreglos
+
+> host/api/v1/users
+
+~~~json
+{
+    "data": [
+        {
+            "displayName": "Arturo B.",
+            "photoURL": "http://.../avatar.jpg",
+            "birth": "1980-04-05",
+        },
+        {
+            "displayName": "Beto B.",
+            "photoURL": "http://.../avatar.jpg",
+            "birth": "1980-08-15",
+        },
+        {
+            "displayName": "Maria B.",
+            "photoURL": "http://.../avatar.jpg",
+            "birth": "1980-12-04",
+        },
+        {
+            "displayName": "Batman B.",
+            "photoURL": "http://.../avatar.jpg",
+            "birth": "1980-01-21",
+        },
+        {
+            "displayName": "Luis B.",
+            "photoURL": "http://.../avatar.jpg",
+            "birth": "1980-09-30",
+        },
+        {
+            "displayName": "Paco B.",
+            "photoURL": "http://.../avatar.jpg",
+            "birth": "1980-06-16",
+        }
+    ]
+}
+~~~
+
+> Mapeos
+
+~~~js
+const users = ...;
+
+const names = users.map(user => user.displayName);
+
+// names <=> ["Arturo B.", "Beto B.", ..., "Paco B."]
+
+const list_elements = users.map(user => {
+    return (
+        <li>
+            <img src={user.photoURL}>
+            <strong>{user.displayName}</strong>
+        </li>
+    );
+});
+~~~
+
+> Filtros
+
+~~~js
+const b_users = users.filter(user => {
+    return user.displayName.match(/^B/i);
+});
+
+const happy_users = users.filter(user => {
+    const exp = /\d{4}-(\d{2})-\d{2}/
+    const m = user.bith.match(exp);
+    const current_month = new Date().getMonth();
+    const bith_month = Number(m[1]);
+    return current_month === bith_month;
+});
+~~~
