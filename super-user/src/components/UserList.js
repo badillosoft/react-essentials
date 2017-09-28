@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import User from './User';
+
 export default class UserList extends Component {
 
     render() {
@@ -15,6 +17,7 @@ export default class UserList extends Component {
         }).map(user => {
             return <User key={user.key} displayName={user.displayName} email={user.email} phoneNumber={user.phoneNumber}
                 address={user.address} picture={user.picture} />
+            //return <User {...user} />
         });
 
         if (users.length === 0) {
