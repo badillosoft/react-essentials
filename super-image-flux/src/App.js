@@ -12,7 +12,8 @@ class App extends Component {
                         <ImageLoader />
                     </div>
                     <div className="col-2">
-                        <ImageViewer image="http://placehold.it/600x800" name="falsa.png" date={new Date().toLocaleString()} />
+                        <ImageViewer image="http://placehold.it/600x800" name="falsa.png" 
+                            date={new Date().toLocaleString()} />
                     </div>
                 </div>
             </div>

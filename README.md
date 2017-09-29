@@ -184,7 +184,7 @@ render() {
 }
 ~~~
 
-## Conceptos Fundamentales
+## Conceptos Fundamentales de React
 
 * __Elemento__ - Un fragmento de html
 
@@ -326,3 +326,125 @@ const happy_users = users.filter(user => {
 ## Ciclo de vida en React
 
 <img src="react-lifecycle.png" width="50%" height="50%">
+
+## Conceptos Fundamentales de Flux
+
+* __Dispatcher__ - Se encarga de despachar las acciones provenientes de los componentes y enviar dichas acciones a los almacenes para repintar las vistas. Sólo se recomienda un sólo despachador de acciones para toda la aplicación.
+
+> src/Dispacher.js
+
+~~~js
+import Dispatcher from 'flux';
+
+export default new Dispatcher();
+~~~
+
+* __Store__ - Es el encargado de almacenar/retener datos cada que se emite una acción. Cada que el despachador le envía la notificación que se ha generado una nueva acción el almacén decide si actualizar su estado y cuál debería ser el nuevo estado.
+
+> src/stores/ImageStore.js
+
+~~~js
+import Dispatcher from '../Dispatcher';
+import ReduceStore from 'flux/utils';
+
+class ImageStore extends ReduceStore {
+
+    constructor() {
+        super(Dispatcher);
+    }
+
+    getInitialState() {
+        return {
+            image: "http://placehold.it/600x800",
+            name: "http://placehold.it/600x800",
+            date: new Date().toLocaleString()
+        };
+    }
+
+    reduce(state, action) {
+        switch(action.type) {
+            case "ON_IMAGE":
+                return {
+                    image: action.image,
+                    name: action.name,
+                    date: new Date().toLocaleString()
+                };
+            default:
+                return state;
+        }
+    }
+
+}
+
+export default new ImageStore();
+~~~
+
+* __Actions__ - Se encargan de definir métodos y los métodos deberían propagar las acciones al depachador de acciones.
+
+> src/actions/ImageActions.js
+
+~~~js
+import Dispatcher from '../Dispatcher';
+
+class ImageActions {
+
+    onImage(image, name) {
+        Dispatcher.dispatch({
+            type: "ON_IMAGE",
+            image: image,
+            name: name
+        });
+    }
+
+}
+
+export default new ImageActions();
+
+// payload
+//{
+//    type: "ON_IMAGE",
+//    image: image,
+//    name: name
+//}
+~~~
+
+* __Container__ - Es un componente de `react` encargado de cargar todas vistas necesarias (otros componentes) y enlazar los almacenes y las acciones mediante su estado interno. Observa que no exportamos la clase componente, sino el contenedor creado.
+
+> src/containers/ImageContainer.js
+
+~~~js
+import React, { Component } from 'react';
+import { Container } from 'flux/utils';
+
+import ImageStore from '../stores/ImageStore';
+import ImageActions from '../actions/ImageActions';
+
+import ImageLoader from '../views/ImageLoader';
+import ImageViewer from '../views/ImageViewer';
+
+class ImageContainer {
+
+    static getStores() {
+        return [ImageStore];
+    }
+
+    static calculateState(prevState) {
+        return {
+            imageStore: ImageStore.getState(),
+            onImage: ImageActions.onImage
+        };
+    }
+
+    render() {
+        return (
+            <ImageLoader onImage={this.state.onImage} />
+            <ImageViewer image={this.state.imageStore.image} 
+                name={this.state.imageStore.name} 
+                date={this.state.imageStore.date}  />
+        );
+    }
+
+}
+
+export default Container.create(ImageContainer);
+~~~
