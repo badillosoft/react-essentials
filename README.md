@@ -329,6 +329,8 @@ const happy_users = users.filter(user => {
 
 ## Conceptos Fundamentales de Flux
 
+> Instalar `Flux` y `Flux/Utils`: `$ npm install flux flux-utils --save`
+
 * __Dispatcher__ - Se encarga de despachar las acciones provenientes de los componentes y enviar dichas acciones a los almacenes para repintar las vistas. Sólo se recomienda un sólo despachador de acciones para toda la aplicación.
 
 > src/Dispacher.js
