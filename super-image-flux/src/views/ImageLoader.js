@@ -7,9 +7,7 @@ export default class ImageLoader extends Component {
         this.state = {
             image: "http://placehold.it/200x200"
         };
-
     }
-
 
     loadFile(file) {
         const reader = new FileReader();
