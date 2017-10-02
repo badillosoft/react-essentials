@@ -1,0 +1,15 @@
+.login {
+    min-width: 350px;
+    width: 30%;
+    margin-top: 40px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 40px;
+    border-radius: 10px;
+    background-color: cornflowerblue;
+    color: white;
+}
+
+.login label {
+    margin-top: 20px;
+}

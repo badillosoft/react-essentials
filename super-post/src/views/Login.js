@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './Login.css';
 
 export default class Login extends Component {
 
@@ -13,7 +14,8 @@ export default class Login extends Component {
 
     render() {
         return (
-            <div>
+            <div className="login">
+                <h1>Acceder</h1>
                 <form action="" method="post">
                     <div className="form-input">
                         <label for="frm-email" >Correo</label>
