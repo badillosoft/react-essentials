@@ -1,0 +1,17 @@
+.avatar {
+    background-color: #efefef;
+    height: 80px;
+}
+
+.avatar img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin: 10px;
+    float: left;
+}
+
+.avatar a {
+    display: block;
+    padding-top: 10px;
+}
