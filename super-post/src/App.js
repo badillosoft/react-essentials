@@ -11,7 +11,8 @@ export default class App extends Component {
   render() {
     return (
       <div>
-        <Post />
+        <Post user={ ({ picture: "http://placehold.it/300x300", displayName: "Ash Ketchum" }) }
+          post={ ({ content: "Hola mundo", left: "32 min" })} />
       </div>
     );
   }

@@ -1,9 +1,9 @@
-.avatar {
+.post-avatar {
     background-color: #efefef;
     height: 80px;
 }
 
-.avatar img {
+.post-avatar img {
     width: 50px;
     height: 50px;
     border-radius: 50%;
@@ -11,7 +11,20 @@
     float: left;
 }
 
-.avatar a {
+.post-avatar a {
     display: block;
     padding-top: 10px;
+}
+
+.post-content {
+    padding: 20px;
+}
+
+.post-footer {
+    padding: 20px;
+    background-color: #efefef;
+}
+
+.post-footer span {
+    margin-right: 10px;
 }
