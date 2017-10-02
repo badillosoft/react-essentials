@@ -18,22 +18,36 @@ export default class LoginController extends Component {
       login_loading: true
     });
 
-    setTimeout(() => {
-      this.setState({
-        login_loading: false
-      });
-
-      if (email === "ash@pokemon.com" && password === "pikachu") {
+    fetch("http://10.19.0.247:3000/api/login", {
+        method: "post",
+        headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+        },
+        body: JSON.stringify({ email, password })
+    }).then(result => result.json(), err => {
         this.setState({
-          login_success: true
+            login_error: "Error al iniciar sesión",
+            login_loading: false
         });
-        return;
-      }
-  
-      this.setState({
-        login_error: "No se ha podido iniciar sesión, verifica los datos de acceso"
-      });
-    }, 2000);
+    }).then(data => {
+        console.log("data", data);
+
+        let error = "";
+        let success = false;
+
+        if (data.error) {
+            error = data.error;
+        } else {
+            success = true;
+        }
+
+        this.setState({
+            login_error: error,
+            login_success: success,
+            login_loading: false
+        });
+    });
   }
 
   render() {
