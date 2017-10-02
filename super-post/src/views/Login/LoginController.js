@@ -7,15 +7,15 @@ export default class LoginController extends Component {
     super(props);
 
     this.state = {
-      login_error: "",
-      login_success: false,
-      login_loading: false
+      error: "",
+      success: false,
+      loading: false
     }
   }
 
   onLogin(email, password) {
     this.setState({
-      login_loading: true
+      loading: true
     });
 
     fetch("http://10.19.0.247:3000/api/login", {
@@ -27,12 +27,10 @@ export default class LoginController extends Component {
         body: JSON.stringify({ email, password })
     }).then(result => result.json(), err => {
         this.setState({
-            login_error: "Error al iniciar sesión",
-            login_loading: false
+            error: "Error al iniciar sesión",
+            loading: false
         });
     }).then(data => {
-        console.log("data", data);
-
         let error = "";
         let success = false;
 
@@ -43,17 +41,17 @@ export default class LoginController extends Component {
         }
 
         this.setState({
-            login_error: error,
-            login_success: success,
-            login_loading: false
+            error: error,
+            success: success,
+            loading: false
         });
     });
   }
 
   render() {
     return (
-      <Login error={this.state.login_error} success={this.state.login_success}
-        loading={this.state.login_loading}
+      <Login error={this.state.error} success={this.state.success}
+        loading={this.state.loading}
         onLogin={ (email, password) => this.onLogin(email, password) } />
     );
   }
