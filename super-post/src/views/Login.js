@@ -43,7 +43,7 @@ export default class Login extends Component {
 
     render() {
 
-        let alert = <div></div>;
+        let alert = null;
 
         if (this.props.error) {
             alert = <div class="alert alert-danger" role="alert">
