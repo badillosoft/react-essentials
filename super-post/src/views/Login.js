@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import logo from '../logo.svg';
 import './Login.css';
 
 export default class Login extends Component {
@@ -15,7 +16,8 @@ export default class Login extends Component {
     render() {
         return (
             <div className="login">
-                <h1>Acceder</h1>
+                <h1 className="text-center">Super Post</h1>
+                <img src={logo} />
                 <form action="" method="post">
                     <div className="form-input">
                         <label for="frm-email" >Correo</label>
@@ -24,6 +26,9 @@ export default class Login extends Component {
                     <div className="form-input">
                         <label for="frm-password" >Contraseña</label>
                         <input className="form-control" id="frm-password" name="frm-password" type="password" placeholder="contraseña" />
+                    </div>
+                    <div className="form-input">
+                        <input className="form-control btn btn-primary" type="submit" value="Ingresar" />
                     </div>
                 </form>
             </div>

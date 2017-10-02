@@ -10,6 +10,6 @@
     color: white;
 }
 
-.login label {
+.login .form-input {
     margin-top: 20px;
 }
