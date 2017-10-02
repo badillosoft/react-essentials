@@ -37,26 +37,42 @@ export default class Login extends Component {
             alert("Error en formulario");
             return;
         }
+
+        this.props.onLogin(this.state.email, this.state.password);
     }
 
     render() {
+
+        let alert = <div></div>;
+
+        if (this.props.error) {
+            alert = <div class="alert alert-danger" role="alert">
+                Error al iniciar sesión
+            </div>;
+        }
+
+        if (this.props.success) {
+            return null;
+        }
+
         return (
             <div className="login">
                 <h1 className="text-center">Super Post</h1>
                 <img src={logo} />
-                <form onSubmit={ e => this.login(e) }>
+                <form onSubmit={e => this.login(e)}>
                     <div className="form-input">
                         <label for="frm-email" >Correo</label>
-                        <input required={this.state.submitted} onChange={ e => this.updateEmail(e.target.value) } className="form-control" id="frm-email" name="frm-email" type="text" placeholder="correo" />
+                        <input required={this.state.submitted} onChange={e => this.updateEmail(e.target.value)} className="form-control" id="frm-email" name="frm-email" type="text" placeholder="correo" />
                     </div>
                     <div className="form-input">
                         <label for="frm-password" >Contraseña</label>
-                        <input required={this.state.submitted} onChange={ e => this.updatePassword(e.target.value) } className="form-control" id="frm-password" name="frm-password" type="password" placeholder="contraseña" />
+                        <input required={this.state.submitted} onChange={e => this.updatePassword(e.target.value)} className="form-control" id="frm-password" name="frm-password" type="password" placeholder="contraseña" />
                     </div>
                     <div className="form-input">
                         <input className="form-control btn btn-primary" type="submit" value="Ingresar" />
                     </div>
                 </form>
+                {alert}
             </div>
         );
     }
