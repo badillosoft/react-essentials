@@ -15,16 +15,18 @@ class App extends Component {
   }
 
   onLogin(email, password) {
-    if (email === "ash@pokemon.com" && password === "pikachu") {
+    setTimeout(() => {
+      if (email === "ash@pokemon.com" && password === "pikachu") {
+        this.setState({
+          login_success: true
+        });
+        return;
+      }
+  
       this.setState({
-        login_success: true
+        login_error: "No se ha podido iniciar sesión, verifica los datos de acceso"
       });
-      return;
-    }
-
-    this.setState({
-      error: "No se ha podido iniciar sesión, verifica los datos de acceso"
-    });
+    }, 2000);
   }
 
   render() {

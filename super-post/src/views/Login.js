@@ -47,7 +47,7 @@ export default class Login extends Component {
 
         if (this.props.error) {
             alert = <div class="alert alert-danger" role="alert">
-                Error al iniciar sesión
+                {this.props.error}
             </div>;
         }
 
@@ -61,11 +61,11 @@ export default class Login extends Component {
                 <img src={logo} />
                 <form onSubmit={e => this.login(e)}>
                     <div className="form-input">
-                        <label for="frm-email" >Correo</label>
+                        <label htmlFor="frm-email" >Correo</label>
                         <input required={this.state.submitted} onChange={e => this.updateEmail(e.target.value)} className="form-control" id="frm-email" name="frm-email" type="text" placeholder="correo" />
                     </div>
                     <div className="form-input">
-                        <label for="frm-password" >Contraseña</label>
+                        <label htmlFor="frm-password" >Contraseña</label>
                         <input required={this.state.submitted} onChange={e => this.updatePassword(e.target.value)} className="form-control" id="frm-password" name="frm-password" type="password" placeholder="contraseña" />
                     </div>
                     <div className="form-input">
