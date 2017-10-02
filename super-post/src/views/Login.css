@@ -10,10 +10,10 @@
     color: white;
 }
 
-.login .form-input {
+.v-space {
     margin-top: 20px;
 }
 
-.login .alert {
-    margin-top: 20px;
+.spinner {
+    font-size: 40px;
 }

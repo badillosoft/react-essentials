@@ -42,12 +42,18 @@ export default class Login extends Component {
     }
 
     render() {
-
         let alert = null;
+        let loading = null;
 
         if (this.props.error) {
-            alert = <div class="alert alert-danger" role="alert">
+            alert = <div class="v-space alert alert-danger" role="alert">
                 {this.props.error}
+            </div>;
+        }
+
+        if (this.props.loading) {
+            loading = <div className="v-space text-center spinner">
+                <i className="fa fa-circle-o-notch fa-spin"></i>
             </div>;
         }
 
@@ -60,19 +66,20 @@ export default class Login extends Component {
                 <h1 className="text-center">Super Post</h1>
                 <img src={logo} />
                 <form onSubmit={e => this.login(e)}>
-                    <div className="form-input">
+                    <div className="v-space form-input">
                         <label htmlFor="frm-email" >Correo</label>
                         <input required={this.state.submitted} onChange={e => this.updateEmail(e.target.value)} className="form-control" id="frm-email" name="frm-email" type="text" placeholder="correo" />
                     </div>
-                    <div className="form-input">
+                    <div className="v-space form-input">
                         <label htmlFor="frm-password" >Contraseña</label>
                         <input required={this.state.submitted} onChange={e => this.updatePassword(e.target.value)} className="form-control" id="frm-password" name="frm-password" type="password" placeholder="contraseña" />
                     </div>
-                    <div className="form-input">
+                    <div className="v-space form-input">
                         <input className="form-control btn btn-primary" type="submit" value="Ingresar" />
                     </div>
                 </form>
                 {alert}
+                {loading}
             </div>
         );
     }

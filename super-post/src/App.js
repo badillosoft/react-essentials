@@ -10,12 +10,21 @@ class App extends Component {
 
     this.state = {
       login_error: "",
-      login_success: false
+      login_success: false,
+      login_loading: false
     }
   }
 
   onLogin(email, password) {
+    this.setState({
+      login_loading: true
+    });
+
     setTimeout(() => {
+      this.setState({
+        login_loading: false
+      });
+
       if (email === "ash@pokemon.com" && password === "pikachu") {
         this.setState({
           login_success: true
@@ -32,6 +41,7 @@ class App extends Component {
   render() {
     return (
       <Login error={this.state.login_error} success={this.state.login_success}
+        loading={this.state.login_loading}
         onLogin={ (email, password) => this.onLogin(email, password) } />
     );
   }
