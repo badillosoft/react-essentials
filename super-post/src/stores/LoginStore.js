@@ -40,7 +40,7 @@ class LoginStore extends ReduceStore {
                 return {
                     logout,
                     loading: action.active,
-                    error,
+                    error: action.active ? "" : error,
                     username,
                     token
                 };
