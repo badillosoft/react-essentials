@@ -13,6 +13,14 @@ export default class PostList extends Component {
     }
 
     componentWillMount() {
+        this.refreshPosts();
+
+        setInterval(() => {
+            this.refreshPosts();
+        }, 20000);
+    }
+
+    refreshPosts() {
         fetch("http://badillosoft.herokuapp.com/api/posts")
             .then(result => result.json())
             .then(data => {
@@ -22,7 +30,7 @@ export default class PostList extends Component {
             });
     }
 
-    render() {
+    render() {
         const posts = this.state.posts.map(post => {
             return <li key={post.id}><Post post={post} /><hr /></li>
         });

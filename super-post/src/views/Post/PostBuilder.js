@@ -17,7 +17,7 @@ export default class PostBuilder extends Component {
     }
 
     onPost() {
-        fetch("http://badillosoft.herokuapp/api/post/new", {
+        fetch("http://badillosoft.herokuapp.com/api/post/new", {
             method: "post",
             headers: {
                 "Content-Type": "application/json",
@@ -32,12 +32,18 @@ export default class PostBuilder extends Component {
                 alert(data.error);
                 return;
             }
+
+            document.getElementById("txt-draft").value = "";
+
+            if (typeof this.props.onPost === "function") {
+                this.props.onPost();
+            }
         });
     }
 
     render() {
         return <div className="post-builder">
-            <textarea onChange={e => this.updateDraft(e.target.innerText)} placeholder="Que estás pensando..."></textarea>
+            <textarea id="txt-draft" onChange={e => this.updateDraft(e.target.value)} placeholder="Que estás pensando..."></textarea>
             <button onClick={e => this.onPost()} >publicar</button>
         </div>;
     }
