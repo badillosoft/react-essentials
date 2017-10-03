@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 // import LoginController from './views/Login/LoginController';
-import LoginController from './views/Login/LoginController';
+import LoginContainer from './containers/LoginContainer';
 import PostController from './views/Post/PostController';
 
 export default class App extends Component {
@@ -22,11 +22,7 @@ export default class App extends Component {
   }
 
   render() {
-    if (this.state.logout) {
-      return <LoginController onSuccess={ () => this.onSucces() } />;
-    }
-
-    return <PostController />;
+    return <LoginContainer />;
   }
 
 }

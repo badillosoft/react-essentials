@@ -42,6 +42,8 @@ export default class Login extends Component {
     }
 
     render() {
+        console.log("Login component", this.props);
+
         let alert = null;
         let loading = null;
 
