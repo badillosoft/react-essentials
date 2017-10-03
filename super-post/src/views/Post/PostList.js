@@ -13,7 +13,7 @@ export default class PostList extends Component {
     }
 
     componentWillMount() {
-        fetch("http://10.19.0.247:5000/api/posts")
+        fetch("http://badillosoft.herokuapp.com/api/posts")
             .then(result => result.json())
             .then(data => {
                 this.setState({
@@ -24,7 +24,7 @@ export default class PostList extends Component {
 
     render() {
         const posts = this.state.posts.map(post => {
-            return <li><Post post={post} /><hr /></li>
+            return <li key={post.id}><Post post={post} /><hr /></li>
         });
 
         return (

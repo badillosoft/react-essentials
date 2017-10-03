@@ -18,7 +18,7 @@ export default class LoginController extends Component {
       loading: true
     });
 
-    fetch("http://10.19.0.247:3000/api/login", {
+    fetch("http://badillosoft.herokuapp.com/api/login", {
         method: "post",
         headers: {
             "Content-Type": "application/json",
@@ -45,6 +45,10 @@ export default class LoginController extends Component {
             success: success,
             loading: false
         });
+
+        if (success && typeof this.props.onSuccess === "function") {
+            this.props.onSuccess();
+        }
     });
   }
 

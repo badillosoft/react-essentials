@@ -64,7 +64,7 @@ export default class Login extends Component {
         return (
             <div className="login">
                 <h1 className="text-center">Super Post</h1>
-                <img src={logo} />
+                <img src={logo} alt="logo" />
                 <form onSubmit={e => this.login(e)}>
                     <div className="v-space form-input">
                         <label htmlFor="frm-email" >Correo</label>

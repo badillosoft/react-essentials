@@ -6,14 +6,27 @@ import PostList from './views/Post/PostList';
 
 export default class App extends Component {
 
-  //<LoginController />
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      logout: true
+    };
+  }
+
+  onSucces() {
+    console.log("Se ha ingresado al sistema");
+    this.setState({
+      logout: false
+    });
+  }
 
   render() {
-    return (
-      <div>
-        <PostList />
-      </div>
-    );
+    if (this.state.logout) {
+      return <LoginController onSuccess={ () => this.onSucces() } />;
+    }
+
+    return <PostList />;
   }
 
 }
