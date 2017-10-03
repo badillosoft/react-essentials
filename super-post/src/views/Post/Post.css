@@ -1,5 +1,9 @@
+.post {
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+}
+
 .post-avatar {
-    background-color: #efefef;
+    background-color: rgba(0, 0, 0, 0.33);
     height: 80px;
 }
 
@@ -30,12 +34,10 @@
 }
 
 .post-list {
-    width: 600px;
     margin-top: 40px;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 40px;
+    /* padding: 40px; */
     border-radius: 10px;
+    /* background-color: rgba(255, 0, 0, 0.1); */
 }
 
 .post-list ul {
@@ -45,4 +47,30 @@
 .post-list li {
     padding: 0px;
     list-style: none;
+}
+
+.post-builder {
+    border-radius: 10px;
+    min-height: 200px;
+    padding: 40px;
+    background-color: rgba(0, 0, 255, 0.75);
+}
+
+.post-builder textarea {
+    width: 100%;
+    min-height: 100px;
+    max-height: 300px;
+    padding: 5px;
+}
+
+.post-builder button {
+    float: right;
+    margin-top: 10px;
+}
+
+.post-controller {
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
 }

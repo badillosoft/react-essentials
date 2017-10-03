@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 // import LoginController from './views/Login/LoginController';
 import LoginController from './views/Login/LoginController';
-import PostList from './views/Post/PostList';
+import PostController from './views/Post/PostController';
 
 export default class App extends Component {
 
@@ -26,7 +26,7 @@ export default class App extends Component {
       return <LoginController onSuccess={ () => this.onSucces() } />;
     }
 
-    return <PostList />;
+    return <PostController />;
   }
 
 }
