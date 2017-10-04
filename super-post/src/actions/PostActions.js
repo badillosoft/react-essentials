@@ -15,6 +15,8 @@ class PostActions {
             })
         }).then(result => result.json())
         .then(data => {
+            // console.log("POST_ADD", data);
+
             if (data.error) {
                 Dispatcher.dispatch({
                     type: "POST_ERROR",
@@ -34,6 +36,8 @@ class PostActions {
         fetch("http://badillosoft.herokuapp.com/api/posts")
             .then(result => result.json())
             .then(data => {
+                // console.log("POST_GET", data);
+
                 if (data.error) {
                     Dispatcher.dispatch({
                         type: "POST_ERROR",

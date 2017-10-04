@@ -17,7 +17,7 @@ export default class PostBuilder extends Component {
     }
 
     addPost() {
-        this.props.addPost(this.state.draft);
+        this.props.addPost(this.state.draft.split("\n").join("<br/>"));
 
         document.getElementById("txt-draft").value = "";
     }
