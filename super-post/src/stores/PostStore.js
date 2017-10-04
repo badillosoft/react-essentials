@@ -14,10 +14,14 @@ class PostStore extends ReduceStore {
         const { posts } = state;
 
         switch (action.type) {
-            case "ADD_POST":
+            case "POST_ADD":
                 posts.unshift(action.post);
                 return {
                     posts
+                };
+            case "POST_GET":
+                return {
+                    posts: action.posts
                 };
             default:
                 return state;

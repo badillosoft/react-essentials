@@ -3,7 +3,7 @@ import Dispatcher from '../Dispatcher';
 class LoginActions {
 
     onLogin(email, password) {
-        console.log("Login", email, password);
+        // console.log("Login", email, password);
 
         Dispatcher.dispatch({
             type: "LOGIN_LOADING",
@@ -19,7 +19,7 @@ class LoginActions {
             body: JSON.stringify({ email, password })
         }).then(result => result.json())
         .then(data => {
-            console.log("Login response", data);
+            // console.log("Login response", data);
 
             Dispatcher.dispatch({
                 type: "LOGIN_LOADING",
@@ -33,6 +33,7 @@ class LoginActions {
                 });
                 return;
             }
+
             Dispatcher.dispatch({
                 type: "ON_LOGIN",
                 username: data.username,

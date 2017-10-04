@@ -54,7 +54,7 @@ class LoginStore extends ReduceStore {
                 };
         }
 
-        console.log("Login state", state);
+        // console.log("Login state", state);
 
         return state;
 
