@@ -16,35 +16,16 @@ export default class PostBuilder extends Component {
         });
     }
 
-    onPost() {
-        fetch("http://badillosoft.herokuapp.com/api/post/new", {
-            method: "post",
-            headers: {
-                "Content-Type": "application/json",
-                "Accept": "application/json"
-            },
-            body: JSON.stringify({
-                content: this.state.draft
-            })
-        }).then(result => result.json())
-        .then(data => {
-            if (data.error) {
-                alert(data.error);
-                return;
-            }
+    addPost() {
+        this.props.addPost(this.state.draft);
 
-            document.getElementById("txt-draft").value = "";
-
-            if (typeof this.props.onPost === "function") {
-                this.props.onPost();
-            }
-        });
+        document.getElementById("txt-draft").value = "";
     }
 
     render() {
         return <div className="post-builder">
             <textarea id="txt-draft" onChange={e => this.updateDraft(e.target.value)} placeholder="Que estás pensando..."></textarea>
-            <button onClick={e => this.onPost()} >publicar</button>
+            <button onClick={e => this.addPost()} >publicar</button>
         </div>;
     }
 

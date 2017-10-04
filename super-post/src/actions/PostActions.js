@@ -50,3 +50,5 @@ class PostActions {
     }
 
 }
+
+export default new PostActions();

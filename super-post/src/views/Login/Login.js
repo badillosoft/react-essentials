@@ -48,7 +48,7 @@ export default class Login extends Component {
         let loading = null;
 
         if (this.props.error) {
-            alert = <div class="v-space alert alert-danger" role="alert">
+            alert = <div className="v-space alert alert-danger" role="alert">
                 {this.props.error}
             </div>;
         }

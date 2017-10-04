@@ -5,7 +5,7 @@ export default class Post extends Component {
     render() {
         const left_s = Math.floor((new Date() - new Date(this.props.post.at)) / 1000);
 
-        let left = `${left_s} seg`;
+        let left = `hace un momento`;
 
         if (left_s >= 60) {
             const left_m = Math.floor(left_s / 60);

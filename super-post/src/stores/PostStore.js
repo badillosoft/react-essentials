@@ -1,6 +1,11 @@
 import { ReduceStore } from 'flux/utils';
+import Dispatcher from '../Dispatcher';
 
 class PostStore extends ReduceStore {
+
+    constructor() {
+        super(Dispatcher);
+    }
 
     getInitialState() {
         return {
