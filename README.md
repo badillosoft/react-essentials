@@ -1,4 +1,4 @@
-# React Essentials
+~# React Essentials
 
 Instructor: Alan Badillo Salas badillo.soft@hotmail.com
 
@@ -449,4 +449,93 @@ class ImageContainer {
 }
 
 export default Container.create(ImageContainer);
+~~~
+
+## Pruebas unitarias con JEST
+
+> Instalar `jest`: `$ npm install -g jest`
+
+> Instalar `jest` en nuestro proyecto: `$ npm install --save-dev jest babel-jest babel-preset-es2015 babel-preset-react react-test-renderer`
+
+> Crear el archivo `.babelrc` en el _root_ del proyecto:
+
+~~~json
+{
+    "presets": [
+        "es2015",
+        "react"
+    ]
+}
+~~~
+
+> Configurar el `package.json` (agregar al final):
+
+~~~json
+{
+    ...
+    "babel": {
+    "presets": [
+      "es2015",
+      "react"
+    ],
+    "plugins": [
+      "syntax-class-properties",
+      "transform-class-properties"
+    ]
+  },
+  "jest": {
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "identity-obj-proxy",
+      "\\.(css|less)$": "identity-obj-proxy"
+    },
+    "moduleFileExtensions": [
+      "js",
+      "jsx",
+      "json"
+    ],
+    "testPathIgnorePatterns": [
+      "/node_modules/"
+    ],
+    "collectCoverage": true,
+    "verbose": true,
+    "modulePathIgnorePatterns": [
+      "rpmbuild"
+    ],
+    "unmockedModulePathPatterns": [
+      "<rootDir>/node_modules/react/",
+      "<rootDir>/node_modules/react-dom/",
+      "<rootDir>/node_modules/react-addons-test-utils/",
+      "<rootDir>/node_modules/fbjs",
+      "<rootDir>/node_modules/core-js"
+    ]
+  }
+}
+~~~
+
+> Instalar `$ npm install --save-dev identity-obj-proxy`
+
+> Realizar las pruebas unitarias con `$ jest -u`
+
+## Crear una prueba unitaria personalizada
+
+> Crear un archivo `<MiPrueba>.test.js`
+
+~~~js
+import Dispatcher from './Dispatcher';
+import LoginStore from './stores/LoginStore';
+import LoginActions from './actions/LoginActions';
+
+describe("Descripción de las pruebas unitaria", () => {
+    it("descripción de la prueba unitaria 1:", () => {
+        const token = LoginStore.getDispatchToken();
+
+        Dispatcher.register(action => {
+            if (action.type === "LOGIN_ERROR") {
+                expect(action.message).toBe("Acceso incorrecto");
+            }
+        });
+
+        LoginActions.onLogin("ash123@pokemon.com", "pikachu");
+    });
+});
 ~~~
